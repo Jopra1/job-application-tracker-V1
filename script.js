@@ -14,6 +14,13 @@ addButton.addEventListener("click",function(){
     }
     
   const li = document.createElement("li");
+  const deleteBtn=document.createElement("button");
+  deleteBtn.innerText="Delete";
+  deleteBtn.addEventListener("click",function() {
+    li.remove();
+  });
+  li.appendChild(deleteBtn);
+jobList.appendChild(li);
   li.innerText = company + " - " + role;
 
   listofJobs.appendChild(li);
