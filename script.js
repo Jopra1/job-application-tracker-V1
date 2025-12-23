@@ -19,9 +19,10 @@ addButton.addEventListener("click",function(){
   deleteBtn.addEventListener("click",function() {
     li.remove();
   });
+    li.innerText = company + " - " + role;
   li.appendChild(deleteBtn);
-jobList.appendChild(li);
-  li.innerText = company + " - " + role;
+  listofJobs.appendChild(li);
+
 
   listofJobs.appendChild(li);
 
