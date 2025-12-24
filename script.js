@@ -13,11 +13,9 @@ addButton.addEventListener("click", function () {
     return;
   }
 
-  // 1️⃣ Create list item
   const li = document.createElement("li");
   li.innerText = `${company} - ${role} `;
 
-  // 2️⃣ Create a NEW dropdown for THIS job
   const statusDropdown = document.createElement("select");
 
   ["Applied", "Interview", "Rejected"].forEach(status => {
@@ -29,7 +27,6 @@ addButton.addEventListener("click", function () {
 
   statusDropdown.value = "Applied";
 
-  // 3️⃣ Change color when status changes
   statusDropdown.addEventListener("change", function () {
     if (this.value === "Interview") {
       li.style.color = "green";
@@ -40,19 +37,16 @@ addButton.addEventListener("click", function () {
     }
   });
 
-  // 4️⃣ Delete button
   const deleteBtn = document.createElement("button");
   deleteBtn.innerText = "Delete";
   deleteBtn.addEventListener("click", function () {
     li.remove();
   });
 
-  // 5️⃣ Attach everything
   li.appendChild(statusDropdown);
   li.appendChild(deleteBtn);
   listofJobs.appendChild(li);
 
-  // clear inputs
   companyName.value = "";
   companyRole.value = "";
 });
