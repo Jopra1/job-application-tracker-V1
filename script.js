@@ -1,3 +1,5 @@
+let jobs = JSON.parse(localStorage.getItem("jobs")) || [];
+
 const addButton = document.getElementById("addJob");
 const companyName = document.getElementById("company");
 const companyRole = document.getElementById("role");
