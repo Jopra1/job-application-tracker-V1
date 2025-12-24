@@ -2,44 +2,57 @@ const addButton = document.getElementById("addJob");
 const companyName = document.getElementById("company");
 const companyRole = document.getElementById("role");
 const listofJobs = document.getElementById("jobList");
-const statusSelect = document.getElementById("status");
 
 addButton.addEventListener("click", function () {
 
   const company = companyName.value;
   const role = companyRole.value;
-  const status = statusSelect.value;
 
   if (company === "" || role === "") {
     alert("Please fill both fields");
     return;
   }
 
+  // 1️⃣ Create list item
   const li = document.createElement("li");
+  li.innerText = `${company} - ${role} `;
 
-  // set text FIRST
-  li.innerText = `${company} - ${role} (${status}) `;
+  // 2️⃣ Create a NEW dropdown for THIS job
+  const statusDropdown = document.createElement("select");
 
-  // color logic
-  if (status === "Interview") {
-    li.style.color = "green";
-  } else if (status === "Rejected") {
-    li.style.color = "red";
-  }
+  ["Applied", "Interview", "Rejected"].forEach(status => {
+    const option = document.createElement("option");
+    option.value = status;
+    option.innerText = status;
+    statusDropdown.appendChild(option);
+  });
 
-  // delete button
+  statusDropdown.value = "Applied";
+
+  // 3️⃣ Change color when status changes
+  statusDropdown.addEventListener("change", function () {
+    if (this.value === "Interview") {
+      li.style.color = "green";
+    } else if (this.value === "Rejected") {
+      li.style.color = "red";
+    } else {
+      li.style.color = "black";
+    }
+  });
+
+  // 4️⃣ Delete button
   const deleteBtn = document.createElement("button");
   deleteBtn.innerText = "Delete";
   deleteBtn.addEventListener("click", function () {
     li.remove();
   });
 
+  // 5️⃣ Attach everything
+  li.appendChild(statusDropdown);
   li.appendChild(deleteBtn);
   listofJobs.appendChild(li);
 
+  // clear inputs
   companyName.value = "";
   companyRole.value = "";
 });
-
-
-
