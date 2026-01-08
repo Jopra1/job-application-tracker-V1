@@ -1,21 +1,36 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Job Application Tracker</title>
-    <link rel="stylesheet"  href="style.css">
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Job Application Tracker</title>
+  <link rel="stylesheet" href="style.css">
 </head>
+
 <body>
-    
-  <h1>Job Application Tracker</h1>
-  <input type="text" id="company" placeholder="Company Name">
-  <input type="text" id="role" placeholder="Role/Position">
+  <div class="app-container">
+    <header>
+      <h1>Job Tracker</h1>
+      <p class="subtitle">Manage your applications efficiently</p>
+    </header>
 
-  <button id="addJob">Add Job</button>
+    <div class="input-section">
+      <div class="input-group">
+        <input type="text" id="company" placeholder="Company Name" autocomplete="off">
+        <input type="text" id="role" placeholder="Role/Position" autocomplete="off">
+        <button id="addJob">
+          <span>Add Job</span>
+        </button>
+      </div>
+    </div>
 
-  <ul id="jobList"></ul>
+    <div class="list-section">
+      <ul id="jobList" class="job-list"></ul>
+    </div>
+  </div>
 
   <script src="./script.js"></script>
 </body>
+
 </html>

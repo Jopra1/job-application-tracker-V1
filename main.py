@@ -31,7 +31,7 @@ def status_advisor_agent(job_status: str) -> Advice:
 
 def status_advisor_node(state: AppState) -> AppState:
     result = status_advisor_agent(state["job_status"])
-    state["advice"] = result.dict()
+    state["advice"] = result.model_dump()
     return state
 graph = StateGraph(AppState)
 
