@@ -65,9 +65,15 @@ app_graph = graph.compile()
 
 app = FastAPI()
 
-@app.get("/")
-def read_root():
-    return {"message": "Job Application Tracker API is running. Go to /docs for the API."}
+from fastapi.middleware.cors import CORSMiddleware
+
+app.add_middleware(
+    CORSMiddleware,
+    allow_origins=["*"],
+    allow_credentials=True,
+    allow_methods=["*"],
+    allow_headers=["*"],
+)
 
 @app.post("/advice")
 def get_advice(request: JobStatusRequest):
